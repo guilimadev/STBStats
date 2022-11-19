@@ -9,8 +9,9 @@ teams = create_teams_list()
 
 # Boolean to resize the dataframe, stored as a session state variable
 
-if '"use_container_width' not in st.session_state:
-    st.session_state['key'] = True
+if 'use_container_width' not in st.session_state:
+    st.session_state['use_container_width'] = True
+
 st.title("STB Stats by " + ':bear:')
 
 all_players, per_48, per_team = st.tabs(["Todos jogadores","Por 48 minutos", "Por time" ])
