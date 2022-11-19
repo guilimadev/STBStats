@@ -50,11 +50,11 @@ with per_48:
     
     col1, col2, col3 = st.columns(3)
     with col1:
-        mpg_slider_48 = st.slider('MPG:', 0.0, 48.0, 48.0, key=2)
+        mpg_slider_48 = st.slider('Max MPG:', 0.0, 48.0, 48.0, key=2)
     with col2:
-        games_slider_48 = st.slider('Min Games:', 0, 82, 0, key=3)
-    with col3:
         selecionar_time_48 = st.selectbox(options=list_of_teams, label="Selecione seu time: ", key=4)
+    with col3:
+        games_slider_48 = st.slider('Min Games:', 0, 82, 0, key=3)
 
     if selecionar_time_48 == "Todos":
         st.dataframe(df_per48[(df_per48['MPG'] <= mpg_slider_48) & (df_per48['Games'] >= games_slider_48)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"))
