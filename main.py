@@ -8,9 +8,7 @@ st.set_page_config(page_title='STB Stats', page_icon=':basketball:', layout='wid
 teams = create_teams_list()
 
 # Boolean to resize the dataframe, stored as a session state variable
-
-if 'use_container_width' not in st.session_state:
-    st.session_state['use_container_width'] = True
+st.checkbox("Tabela Full Size", value=True, key="use_container_width")
 
 st.title("STB Stats by " + ':bear:')
 
