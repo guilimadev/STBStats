@@ -13,7 +13,7 @@ import streamlit as st
 @st.cache(show_spinner=False)
 def create_teams_df(param):
     url = "https://sflendas.lgleite.com/index.php?page=html/rosters/roster{}.htm".format(param)
-
+    j = 2
 
     options = Options()
     options.add_argument("--headless")
