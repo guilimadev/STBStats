@@ -55,7 +55,7 @@ with per_48:
         selecionar_time_48 = st.selectbox(options=list_of_teams, label="Selecione seu time: ", key=4)
 
     if selecionar_time_48 == "Todos":
-        st.dataframe(df_per48[(df_per48['MPG'] <= mpg_slider_48) & (df_per48['Games'] >= games_slider_48)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"), use_container_width=True)
+        st.dataframe(df_per48[(df_per48['MPG'] <= mpg_slider_48) & (df_per48['Games'] >= games_slider_48)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"))
     else:
         st.dataframe(df_per48[(df_per48['MPG'] <= mpg_slider_48) & (df_per48['Games'] >= games_slider_48) & (df_per48['Team'] == selecionar_time_48)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"))    
 
