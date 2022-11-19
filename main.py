@@ -17,14 +17,7 @@ df_all_players = df_all_players.astype({'Games': 'int'})
 df_all_players.index = [''] * len(df_all_players)
 df_all_players = df_all_players.fillna(0)
 
-df_per48 = df_all_players
-df_per48['APG'] = df_per48['APG'] * 48 / df_per48['MPG']
-df_per48['PPG'] = df_per48['PPG'] * 48 / df_per48['MPG']
-df_per48['TPG'] = df_per48['TPG'] * 48 / df_per48['MPG']
-df_per48['BPG'] = df_per48['BPG'] * 48 / df_per48['MPG']
-df_per48['SPG'] = df_per48['SPG'] * 48 / df_per48['MPG']
-df_per48['RPG'] = df_per48['RPG'] * 48 / df_per48['MPG']
-df_per48 = df_per48.fillna(0)
+
 
 
 with all_players:
@@ -42,6 +35,14 @@ with per_team:
         st.dataframe(df_all_players[(df_all_players['Team'] == selecionar_time)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}")) 
 
 with per_48:
+    df_per48 = df_all_players
+    df_per48['APG'] = df_per48['APG'] * 48 / df_per48['MPG']
+    df_per48['PPG'] = df_per48['PPG'] * 48 / df_per48['MPG']
+    df_per48['TPG'] = df_per48['TPG'] * 48 / df_per48['MPG']
+    df_per48['BPG'] = df_per48['BPG'] * 48 / df_per48['MPG']
+    df_per48['SPG'] = df_per48['SPG'] * 48 / df_per48['MPG']
+    df_per48['RPG'] = df_per48['RPG'] * 48 / df_per48['MPG']
+    df_per48 = df_per48.fillna(0)
     list_of_teams = np.empty(1)
     list_of_teams = np.append(list_of_teams,"Todos")
     list_of_teams = np.delete(list_of_teams, 0)
