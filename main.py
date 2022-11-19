@@ -34,13 +34,12 @@ with all_players:
         mpg_slider = st.slider('MPG:', 0.0, 48.0, 48.0)
     with col2:
         games_slider = st.slider('Min Games:', 0, 82, 0)
-    st.dataframe(df_all_players[(df_all_players['MPG'] <= mpg_slider) & (df_all_players['Games'] >= games_slider)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"),  use_container_width=st.session_state.use_container_width)
+    st.dataframe(df_all_players[(df_all_players['MPG'] <= mpg_slider) & (df_all_players['Games'] >= games_slider)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"))
 
 
 with per_team:
     selecionar_time = st.selectbox(options=df_all_players.Team.unique(), label="Selecione seu time: ")
-    if selecionar_time:      
-        st.dataframe(df_all_players[(df_all_players['Team'] == selecionar_time)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"),  use_container_width=st.session_state.use_container_width) 
+    if selecionar_time:      ) 
 
 with per_48:
     list_of_teams = np.empty(1)
@@ -59,6 +58,6 @@ with per_48:
     if selecionar_time_48 == "Todos":
         st.dataframe(df_per48[(df_per48['MPG'] <= mpg_slider_48) & (df_per48['Games'] >= games_slider_48)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"), use_container_width=True)
     else:
-        st.dataframe(df_per48[(df_per48['MPG'] <= mpg_slider_48) & (df_per48['Games'] >= games_slider_48) & (df_per48['Team'] == selecionar_time_48)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}"),  use_container_width=st.session_state.use_container_width)    
+        st.dataframe(df_per48[(df_per48['MPG'] <= mpg_slider_48) & (df_per48['Games'] >= games_slider_48) & (df_per48['Team'] == selecionar_time_48)].style.format(subset=['MPG','APG', 'SPG', 'RPG', 'BPG', 'TPG', 'PPG'], formatter="{:.1f}")   ) 
 
    
