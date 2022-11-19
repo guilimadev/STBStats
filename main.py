@@ -15,6 +15,7 @@ all_players, per_48, per_team = st.tabs(["Todos jogadores","Por 48 minutos", "Po
 df_all_players = pd.concat(teams)
 df_all_players = df_all_players.astype({'Games': 'int'})
 df_all_players.index = [''] * len(df_all_players)
+df_all_players = df_all_players.fillna(0)
 
 df_per48 = df_all_players
 df_per48['APG'] = df_per48['APG'] * 48 / df_per48['MPG']
