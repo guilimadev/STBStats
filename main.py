@@ -1,19 +1,41 @@
-from create_teams_list import create_teams_list
+from google.cloud import firestore
 
 import pandas as pd
 import streamlit as st
 import numpy as np
 
 st.set_page_config(page_title='STB Stats', page_icon=':basketball:', layout='wide')
-teams = create_teams_list()
+
+
+db = firestore.Client.from_service_account_json("firestore-key.json")
+#teams = list(db.collection(u'teams').stream())
+
+teams = db.collection("teams")
+df = pd.DataFrame()
+dfs = []
+for team in teams.stream():
+    df_team = pd.DataFrame()
+    doc2 = team.to_dict()   
+    team_name = doc2['name']    
+    players = db.collection('teams').document(f"{team_name}").collection('players').stream()
+    
+
+    players_dict = list(map(lambda x: x.to_dict(), players))
+    df_team = pd.DataFrame.from_dict(players_dict)
+    df_team = df_team.assign(Team=team_name)
+    dfs.append(df_team)
+
 
 
 st.title("STB Stats by " + ':bear:')
 
 all_players, per_team = st.tabs(["Todos jogadores", "Por time" ])
 
-df_all_players = pd.concat(teams)
+df_all_players = pd.concat(dfs)
+df_all_players = df_all_players[['Name', 'Position', 'Games','MPG', 'PPG', 'RPG', 'APG', 'SPG', 'BPG', 'TPG', 'FG%', 'FT%', '3P%', 'Team']]
 df_all_players = df_all_players.astype({'Games': 'int'})
+df_all_players = df_all_players.replace('.', ',')
+df_all_players = df_all_players.astype({'MPG': 'float', 'APG': 'float', 'SPG': 'float', 'RPG': 'float', 'BPG': 'float', 'TPG': 'float', 'PPG': 'float'})
 df_all_players.index = [''] * len(df_all_players)
 df_all_players = df_all_players.fillna(0)
 
