@@ -3,11 +3,36 @@ from google.oauth2 import service_account
 import pandas as pd
 import streamlit as st
 import numpy as np
-from dfs_builder import create_df
 import json
+from streamlit_autorefresh import st_autorefresh
+from datetime import datetime
 
 st.set_page_config(page_title='STB Stats', page_icon=':basketball:', layout='wide')
 
+
+#db = firestore.Client.from_service_account_json("firestore-key.json")
+
+st_autorefresh(interval=60*60*1000, key='dfbuilderrefresh')
+def create_df():
+    key_dict = json.loads(st.secrets["textkey"])
+    creds = service_account.Credentials.from_service_account_info(key_dict)
+    db = firestore.Client(credentials=creds)
+
+    players = db.collection("players").stream()  
+    players_dict = list(map(lambda x: x.to_dict(), players)) 
+    dfs = []
+    
+    df_players = pd.DataFrame()            
+
+   
+    df_players = pd.DataFrame.from_dict(players_dict)
+    
+    
+    print(df_players)
+    print('Enter')
+    now = datetime.now()
+    print(now)
+    return df_players
 
 dfs = create_df()
  
@@ -16,7 +41,7 @@ st.title("STB Stats by " + ':bear:')
 
 all_players, per_team = st.tabs(["Todos jogadores", "Por time" ])
 
-df_all_players = pd.concat(dfs)
+df_all_players = dfs.copy()
 df_all_players = df_all_players[['Name', 'Position', 'Games','MPG', 'PPG', 'RPG', 'APG', 'SPG', 'BPG', 'TPG', 'FG%', 'FT%', '3P%', 'Team']]
 df_all_players = df_all_players.astype({'Games': 'int'})
 df_all_players = df_all_players.replace('.', ',')
