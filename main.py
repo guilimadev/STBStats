@@ -10,7 +10,7 @@ st.set_page_config(page_title='STB Stats', page_icon=':basketball:', layout='wid
 
 
 dfs = create_df()
-
+ 
 
 st.title("STB Stats by " + ':bear:')
 
