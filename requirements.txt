@@ -3,3 +3,4 @@ streamlit==1.12.0
 pandas==1.5.1
 google-cloud-firestore
 google-auth-oauthlib
+streamlit_autorefresh
