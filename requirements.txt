@@ -4,3 +4,4 @@ pandas==1.5.1
 google-cloud-firestore
 google-auth-oauthlib
 streamlit_autorefresh
+selenium
