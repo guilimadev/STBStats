@@ -5,4 +5,4 @@ google-cloud-firestore
 google-auth-oauthlib
 streamlit_autorefresh
 selenium
-webdriver
+webdriver_manager
