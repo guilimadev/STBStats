@@ -16,7 +16,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 st.set_page_config(page_title='STB Stats', page_icon=':basketball:', layout='wide')
 
 
-db = firestore.Client.from_service_account_json("firestore-key.json")
+import json
+key_dict = json.loads(st.secrets["textkey"])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds)
 
 
 doc_ref = db.collection("players")
