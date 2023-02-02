@@ -91,7 +91,7 @@ while i != 30  :
 
 
 st_autorefresh(interval=60*60*1000, key='dfbuilderrefresh')
-@st.cache
+@st.experimental_memo
 def create_df():
     key_dict = json.loads(st.secrets["textkey"])
     creds = service_account.Credentials.from_service_account_info(key_dict)
