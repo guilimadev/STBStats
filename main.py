@@ -16,7 +16,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 st.set_page_config(page_title='STB Stats', page_icon=':basketball:', layout='wide')
 
 
-import json
+
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds)
@@ -89,7 +89,9 @@ while i != 30  :
     create_teams_df(i)
     i += 1
 
+
 st_autorefresh(interval=60*60*1000, key='dfbuilderrefresh')
+@st.cache
 def create_df():
     key_dict = json.loads(st.secrets["textkey"])
     creds = service_account.Credentials.from_service_account_info(key_dict)

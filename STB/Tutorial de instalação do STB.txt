@@ -1,0 +1,21 @@
+Instalação do Season Ticket Basketball 2003:
+1º passo: Copiar a pasta "STB" do CD para a unidade C:\Simuladores\
+2º passo: Clique simples no "DAEMON Tools Lite (4.30.1)"
+3º passo: Clique simples no "Dispositivo 0: [E:] Vazio"
+4º passo: Escolha e abra o arquivo "STB.iso"
+5º passo: Instalar o Season Ticket Basketball 2003 em C:\Arquivos de programas\Infogrames\Season Ticket Basketball 2003
+
+Instalação do Patch do Season Ticket Basketball 2003:
+1º passo: Extrair o arquivo "Patch do STB.zip" em C:\Arquivos de programas\Infogrames\Season Ticket Basketball 2003
+
+Instalação do Patch 2 do Season Ticket Basketball 2003:
+1º passo: Extrair o arquivo "Patch 2 do STB.zip" em C:\Arquivos de programas\Infogrames\Season Ticket Basketball 2003
+
+Instalação dos Rosters do Season Ticket Basketball 2003:
+1º passo: Extrair o arquivo "Rosters.zip" em C:\Arquivos de programas\Infogrames\Season Ticket Basketball 2003\import
+
+Obrigação:
+Toda vez que for abrir o STB, ir em "Opções regionais e de idioma (Painel de controle)" e mudar o idioma para "Inglês (Estados Unidos)".
+
+Feito tudo isso, desfrute do Season Ticket Basketball 2003,
+Ítalo Costa Serique.
