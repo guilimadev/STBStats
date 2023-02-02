@@ -26,7 +26,7 @@ doc_ref = db.collection("players")
 
 
 st_autorefresh(interval=60*60*1000, key='scrapper')
-
+@st.cache
 def create_teams_df(param):
     url = "https://sflendas.lgleite.com/index.php?page=html/rosters/roster{}.htm".format(param)
     
